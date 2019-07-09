@@ -17,6 +17,23 @@ public class DepartmentsTest {
     }
 
     @Test
+    public void getId() {
+    }
+
+    @Test
+    public void setId() {
+
+    }
+
+    @Test
+    public void equals1() {
+    }
+
+    @Test
+    public void hashCode1() {
+    }
+
+    @Test
     public void getNameReturnsCorrectName() throws Exception {
         Departments testDepartment= setupDepartments();
         assertEquals("marketing", testDepartment.getName());
@@ -55,22 +72,7 @@ public class DepartmentsTest {
         assertNotEquals(8, testDepartment.getNumberOfEmployees());
     }
 
-    @Test
-    public void getId() {
-    }
 
-    @Test
-    public void setId() {
-
-    }
-
-    @Test
-    public void equals1() {
-    }
-
-    @Test
-    public void hashCode1() {
-    }
 
     //helper
     public  Departments setupDepartments(){
