@@ -7,11 +7,11 @@ import java.util.List;
 public interface NewsDao {
     //create
     void add(News news);
-    //void addNewsToDepartment(News news, Department department);
+    //void addNewsToDepartments(News news, Department department);
 
     //read
     List<News> getAll();
-    // List<Department> getAllDepartmentsForANews(int id);
+    // List<Departments> getAllDepartmentsForANews(int id);
 
     //update
     //omit for now
