@@ -156,13 +156,14 @@ public class App {
             jsonMap.put("errorMessage", err.getMessage());
             res.type("application/json");
             res.status(err.getStatusCode());
+            res.type("application/json");
             res.body(gson.toJson(jsonMap));
         });
 
 
-        after((req, res) ->{
-            res.type("application/json");
-        });
+//        after((req, res) ->{
+//            res.type("application/json");
+//        });
 
     }
 }
