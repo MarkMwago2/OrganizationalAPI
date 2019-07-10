@@ -20,3 +20,9 @@ CREATE TABLE IF NOT EXISTS users (
  position VARCHAR,
  departmentId INTEGER
 );
+
+CREATE TABLE IF NOT EXISTS departments (
+ id int PRIMARY KEY auto_increment,
+ foodtypeid INTEGER,
+ restaurantid INTEGER
+);
