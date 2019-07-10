@@ -1,7 +1,25 @@
-CREATE DATABASE OrgAPI;
-\c OrgAPI;
-CREATE TABLE departments(department VARCHAR, description VARCHAR, employeeId int);
-CREATE TABLE users(name VARCHAR, post VARCHAR, role VARCHAR, address VARCHAR);
-CREATE TABLE news(title VARCHAR, content VARCHAR, department VARCHAR);
-CREATE TABLE departments_users(departmentId int, employeeId int);
+SET MODE PostgreSQL;
+
+
+CREATE TABLE IF NOT EXISTS departments(
+ id int PRIMARY KEY auto_increment,
+ name VARCHAR,
+ description VARCHAR,
+ numberOfemployees INTEGER,
+);
+
+CREATE TABLE IF NOT EXISTS news (
+ id int PRIMARY KEY auto_increment,
+ name VARCHAR
+);
+
+CREATE TABLE users (
+ id SERIAL PRIMARY KEY,
+ roles VARCHAR,
+ position VARCHAR,
+ departmentId INTEGER,
+ createdat BIGINT
+);
+
+
 CREATE DATABASE OrgAPI_test WITH TEMPLATE OrgAPI;

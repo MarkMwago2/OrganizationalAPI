@@ -1,32 +1,25 @@
 package dao;
 
-import models.Departments;
-import models.Users;
-import models.News;
 
+import models.Departments;
+import models.News;
 
 import java.util.List;
 
 public interface DepartmentsDao {
-    void add(Departments department);
+    //create
+    void add (Departments department);
+    void addDepartmentToNews(Departments department, News news);
 
-    //Find by id
-    Departments findById(int id);
-
-    //Get all departments
+    //read
     List<Departments> getAll();
+    Departments findById(int id);
+    List<News> getAllNewsByDepartment(int departmentId);
 
-    //Get all news for a department
-    List<News> getAllNews(int departmentId);
-
-    //many to many relationship
-    //Add a department to a user
-    void addDepartmentToEmployees(Departments department, Users employees);
-    //many to many relationship
-    //Get all users in a particular department
-    List<Users> getAllEmployeesForADepartment(int employee_id);
+    //update
+    void update(int id, String name, String description, int numberOfEmployees);
 
     //delete
-    //deleteById(int id);
+    void deleteById(int id);
     void clearAll();
 }
