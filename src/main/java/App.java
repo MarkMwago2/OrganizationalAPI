@@ -2,6 +2,7 @@ import dao.DepartmentsDao;
 import dao.Sql2oDepartmentsDao;
 import dao.Sql2oNewsDao;
 import dao.Sql2oUsersDao;
+import models.DB;
 import models.Departments;
 import models.News;
 import models.Users;
@@ -24,12 +25,12 @@ public class App {
         Connection conn;
         Gson gson = new Gson();
 
-        String connectionString = "jdbc:postgresql://localhost:5432/OrgAPI";
+        String connectionString = "jdbc:postgresql://localhost:5432/orgapi";
         Sql2o sql2o = new Sql2o(connectionString, "mark", "87654321");
         departmentDao = new Sql2oDepartmentsDao(sql2o);
         newsDao = new Sql2oNewsDao(sql2o);
         usersDao = new Sql2oUsersDao(sql2o);
-        conn = sql2o.open();
+//        conn = DB.sql2o.open();
 
         //CREATE
         post("/departments/:departmentId/news/:newsId", "application/json", (req, res) -> {

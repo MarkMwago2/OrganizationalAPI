@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS news (
 CREATE TABLE users (
  id SERIAL PRIMARY KEY,
  roles VARCHAR,
- position VARCHAR,
+ post VARCHAR,
  departmentId INTEGER,
  createdat BIGINT
 );
