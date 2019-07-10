@@ -83,7 +83,7 @@ public class Sql2oDepartmentsDao implements DepartmentsDao {
                     .addParameter("departmentId", departmentId)
                     .executeAndFetch(Integer.class);
             for(Integer employeeId: allEmployeesIds){
-                String getFromUsers = "SELECT * FROM employees WHERE id=:employeeId";
+                String getFromUsers = "SELECT * FROM users WHERE id=:employeeId";
                 allUsers.add(conn.createQuery(getFromUsers)
                         .addParameter("employeeId", employeeId)
                         .executeAndFetchFirst(Users.class));
