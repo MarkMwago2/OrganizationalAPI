@@ -5,19 +5,18 @@ import models.News;
 import java.util.List;
 
 public interface NewsDao {
-    //create
+    //Add new for a department
     void add(News news);
-    //void addNewsToDepartments(News news, Department department);
 
-    //read
-    List<News> getAll();
-    // List<Departments> getAllDepartmentsForANews(int id);
+    //Find news by the id
+    News findById(int id);
 
-    //update
-    //omit for now
+    //Update department news
+    void updateNews(int id, String title, String content,int departmentId);
 
-    //delete
-    void deleteById(int id);
+    //Get all department news by department id
+    List<News> getAllNews(int departmentId);
+
     void clearAll();
 }
 
