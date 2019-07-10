@@ -1,0 +1,33 @@
+#nav{
+    list-style: none;
+    float: left;
+    margin-right: 0px;
+    margin-top: 30px;
+}
+#nav li{
+    display: inline-block;
+    margin-left: 30px;
+    text-transform: uppercase;
+}
+#nav li a{
+    color:blue;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+#nav li a:hover{
+    color: yellow;
+    background-color: transparent !important;
+    border-bottom: 2px solid #ffffff;
+    transition: all 0.5s ease-in;
+    padding: 15px 0;
+    outline: none;
+}
+body{
+    background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(/images/business.jpeg);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    }
+

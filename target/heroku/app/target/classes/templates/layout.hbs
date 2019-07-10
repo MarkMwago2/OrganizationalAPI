@@ -1,0 +1,41 @@
+{{#block "header"}}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>
+            {{#block "title" }}ORGANIZATIONAL NEWS{{/block}}
+
+        </title>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Sansita&display=swap" rel="stylesheet">
+        <link rel='stylesheet' href='/css/app.css'>
+        {{#block "styles"}}{{/block}}
+
+    </head>
+    <body>
+{{/block}}
+<ul class="nav" id="nav">
+    <li role="presentation" class="active"><a href="/">Home</a></li>
+<!--    <li role="presentation"><a href="/form">New Animal Sighting</a></li>-->
+<!--    &lt;!&ndash;    <li role="presentation"><a href="/heros/list">Add Sightings</a></li>&ndash;&gt;-->
+<!--    <li role="presentation"><a href="/sightings">View Sightings</a></li>-->
+</ul>
+<div class="container">
+    <!--begin main template-->
+
+    <div class="col-md-12">
+        {{#block "content"}}
+        {{/block}}
+
+    </div>
+</div>
+{{#block "footer"}}
+    </div>
+    <footer class="footer">
+        <div class="container">
+
+        </div>
+    </footer>
+    </body>
+    </html>
+{{/block}}

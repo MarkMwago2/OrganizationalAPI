@@ -1,13 +1,12 @@
-plugins {
-    id 'java'
-    id 'application'
-}
+apply plugin: 'java'
+apply plugin: 'application'
 
-group 'com.moringa-newsapi'
+mainClassName = 'App'
+applicationName = "organizational-api"
+
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
-mainClassName = "App"
 
 repositories {
     mavenCentral()
@@ -18,7 +17,9 @@ dependencies {
     compile "com.sparkjava:spark-core:2.6.0"
     compile 'org.slf4j:slf4j-simple:1.7.21'
     compile group: 'org.sql2o', name: 'sql2o', version: '1.5.4'
-    compile group: 'org.postgresql', name: 'postgresql', version: '9.4-1201-jdbc41'
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.2'
     compile 'com.google.code.gson:gson:2.5'
     compile "com.sparkjava:spark-template-handlebars:2.5.5"
 }
+defaultTasks = ['clean']
+task stage(dependsOn: ['clean', 'installDist'])
