@@ -26,26 +26,26 @@ public class Sql2oUsersDaoTest {
         conn = sql2o.open();
     }
 
-//    @After
-//    public void tearDown() throws Exception {
-//        departmentDao.clearAll();
-//        usersDao.clearAll();
-//        newsDao.clearAll();
-//        System.out.println("clearing database");
-//    }
-//    @AfterClass
-//    public static void shutDown() throws Exception{ //changed to static
-//        conn.close();
-//        System.out.println("connection closed");
-//    }
-//    @Test
-//    public void addingUsersSetsId() throws Exception {
-//        Users testUser = setupNewUsers();
-//        int originalUsersId = testUser.getId();
-//        usersDao.add(testUser);
-//
-//        assertEquals(originalUsersId,testUser.getId());
-//    }
+    @After
+    public void tearDown() throws Exception {
+        departmentDao.clearAll();
+        usersDao.clearAll();
+        newsDao.clearAll();
+        System.out.println("clearing database");
+    }
+    @AfterClass
+    public static void shutDown() throws Exception{ //changed to static
+        conn.close();
+        System.out.println("connection closed");
+    }
+    @Test
+    public void addingUsersSetsId() throws Exception {
+        Users testUser = setupNewUsers();
+        int originalUsersId = testUser.getId();
+        usersDao.add(testUser);
+
+        assertEquals(originalUsersId,testUser.getId());
+    }
 //    @Test
 //    public void clearAll() throws Exception {
 //        Users testUsers = setupUsers();
@@ -53,29 +53,29 @@ public class Sql2oUsersDaoTest {
 //        usersDao.clearAll();
 //        assertEquals(0, usersDao.getAll().size());
 //    }
-//
-//    //helper
-//    public Users setupNewUsers() {
-//        return new Users("Mark", "marketing", "exec", 2);
-//
-//    }
-//
-//    public Users setupUsers() {
-//        Users users = new Users("Mark", "marketing", "exec", 2);
-//        usersDao.add(users);
-//        return users;
-//    }
-//
-//    public Users setupUsersForDepartment(Departments department) {
-//        Users users = new Users("Mark", "marketing", "exec", department.getId());
-//        usersDao.add(users);
-//        return users;
-//    }
-//
-//    public Departments setupDepartment() {
-//        Departments department = new Departments("Marketing", "adverts", 20);
-//        departmentDao.add(department);
-//        return department;
-//    }
-//}
+
+    //helper
+    public Users setupNewUsers() {
+        return new Users("Mark", "marketing", "exec", 2);
+
+    }
+
+    public Users setupUsers() {
+        Users users = new Users("Mark", "marketing", "exec", 2);
+        usersDao.add(users);
+        return users;
+    }
+
+    public Users setupUsersForDepartment(Departments department) {
+        Users users = new Users("Mark", "marketing", "exec", department.getId());
+        usersDao.add(users);
+        return users;
+    }
+
+    public Departments setupDepartment() {
+        Departments department = new Departments("Marketing", "adverts", 20);
+        departmentDao.add(department);
+        return department;
+    }
+
 }

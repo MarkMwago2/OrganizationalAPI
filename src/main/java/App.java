@@ -10,6 +10,8 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import com.google.gson.Gson;
 import Exceptions.ApiException;
+import spark.ModelAndView;
+import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +33,13 @@ public class App {
         newsDao = new Sql2oNewsDao(sql2o);
         usersDao = new Sql2oUsersDao(sql2o);
 //        conn = DB.sql2o.open();
+
+//        staticFileLocation("/public");
+
+        get ("/", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
 
         //CREATE
         post("/departments/:departmentId/news/:newsId", "application/json", (req, res) -> {

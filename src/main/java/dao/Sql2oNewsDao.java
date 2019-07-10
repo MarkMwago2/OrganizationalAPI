@@ -39,13 +39,13 @@ public class Sql2oNewsDao implements NewsDao{
     @Override
     public void deleteById(int id) {
         String sql = "DELETE from news WHERE id=:id";
-        String deleteJoin = "DELETE from department_news WHERE newsId = :newsId";
+        String deleteJoin = "DELETE from department_news WHERE newsid = :newsid";
         try (Connection con = DB.sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
                     .executeUpdate();
             con.createQuery(deleteJoin)
-                    .addParameter("newsId", id)
+                    .addParameter("newsid", id)
                     .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);
@@ -63,11 +63,11 @@ public class Sql2oNewsDao implements NewsDao{
     }
     @Override
     public void addNewsToDepartment(News news, Departments department){
-        String sql = "INSERT INTO department_news (departmentId, newsId) VALUES (:departmentId, :newsId)";
+        String sql = "INSERT INTO department_news (departmentid, newsid) VALUES (:departmentId, :newsId)";
         try (Connection con = DB.sql2o.open()) {
             con.createQuery(sql)
-                    .addParameter("departmentId", department.getId())
-                    .addParameter("newsId", news.getId())
+                    .addParameter("departmentid", department.getId())
+                    .addParameter("newsid", news.getId())
                     .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);
@@ -77,17 +77,17 @@ public class Sql2oNewsDao implements NewsDao{
     @Override
     public List<Departments> getAllDepartmentsForANews(int newsId) {
         List<Departments> departments = new ArrayList();
-        String joinQuery = "SELECT departmentId FROM department_news WHERE newsId = :newsId";
+        String joinQuery = "SELECT departmentid FROM department_news WHERE newsid = :newsid";
 
         try (Connection con = DB.sql2o.open()) {
             List<Integer> allDepartmentIds = con.createQuery(joinQuery)
                     .addParameter("newsId", newsId)
                     .executeAndFetch(Integer.class); //what is happening in the lines above?
             for (Integer departmentId : allDepartmentIds){
-                String departmentQuery = "SELECT * FROM department WHERE id = :departmentId";
+                String departmentQuery = "SELECT * FROM departments WHERE id = :departmentid";
                 departments.add(
                         con.createQuery(departmentQuery)
-                                .addParameter("departmentId", departmentId)
+                                .addParameter("departmentid", departmentId)
                                 .executeAndFetchFirst(Departments.class));
             } //why are we doing a second sql query - set?
         } catch (Sql2oException ex){

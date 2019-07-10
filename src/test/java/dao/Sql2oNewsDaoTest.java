@@ -22,6 +22,7 @@ public class Sql2oNewsDaoTest {
     public DatabaseRule database = new DatabaseRule();
 
 
+
     @Before
     public void setUp() throws Exception {
         String connectionString = "jdbc:postgresql://localhost:5432/orgapi_test";
@@ -32,19 +33,19 @@ public class Sql2oNewsDaoTest {
         conn = sql2o.open();
     }
 
-//    @After
-//    public void tearDown() throws Exception {
-//        departmentDao.clearAll();
-//        usersDao.clearAll();
-//        newsDao.clearAll();
+    @After
+    public void tearDown() throws Exception {
+        departmentDao.clearAll();
+        usersDao.clearAll();
+        newsDao.clearAll();
 //        System.out.println("clearing database");
-//    }
-//    @AfterClass
-//    public static void shutDown() throws Exception{ //changed to static
-//        conn.close();
+    }
+    @AfterClass
+    public static void shutDown() throws Exception{ //changed to static
+        conn.close();
 //        System.out.println("connection closed");
-//    }
-//
+    }
+
 //    @Test
 //    public void add() throws Exception{
 //
@@ -64,7 +65,7 @@ public class Sql2oNewsDaoTest {
 //    public void addedNewsAreReturnedFromGetAll() throws Exception {
 //        News testNews = setupNewNews();
 //        newsDao.add(testNews);
-//        assertEquals(1, newsDao.getAll().size());
+//        assertEquals(2, newsDao.getAll().size());
 //    }
 //
 //
@@ -86,7 +87,7 @@ public class Sql2oNewsDaoTest {
 //
 //    }
 //    @Test
-//    public void addFoodTypeToDepartmentAddsTypeCorrectly() throws Exception {
+//    public void addNewsToDepartmentAddsTypeCorrectly() throws Exception {
 //
 //        Departments testDepartment = setupDepartment();
 //        Departments altDepartment = setupAltDepartment();
@@ -141,18 +142,18 @@ public class Sql2oNewsDaoTest {
 //        newsDao.deleteById(testDepartment.getId());
 //        assertEquals(1, newsDao.getAllDepartmentsForANews(testNews.getId()).size());
 //    }
-//
-//
-//    // helpers
-//
-//    public News setupNewNews(){
-//        return new News("Leave Notice", 1);
-//    }
-//    public Departments setupDepartment (){
-//        return new Departments("Accounts", "Accounting biz", 23);
-//    }
-//
-//    public Departments setupAltDepartment (){
-//        return new Departments ("Accounts", "Accounting biz", 23);
-//    }
+
+
+   // helpers
+
+    public News setupNewNews(){
+        return new News("Leave Notice", 1);
+    }
+    public Departments setupDepartment (){
+        return new Departments("Accounts", "Accounting biz", 23);
+    }
+
+    public Departments setupAltDepartment (){
+        return new Departments ("Accounts", "Accounting biz", 23);
+    }
 }

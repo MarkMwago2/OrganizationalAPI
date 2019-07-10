@@ -47,33 +47,33 @@ public class Sql2oDepartmentsDaoTest {
 //        System.out.println("connection closed");
 //    }
 
-//    @Test
-//    public void add() throws Exception{
-//        Departments testDepartment = setupDepartment();
-//        int originalDepartmentId = testDepartment.getId();
-//        departmentDao.add(testDepartment);
-//        assertNotEquals(originalDepartmentId, testDepartment.getId());
+    @Test
+    public void add() throws Exception{
+        Departments testDepartment = setupDepartment();
+        int originalDepartmentId = testDepartment.getId();
+        departmentDao.add(testDepartment);
+        assertNotEquals(originalDepartmentId, testDepartment.getId());
+
+    }
 //
-//    }
 //
+    @Test
+    public void addedDepartmentAreReturnedFromGetAll() throws Exception {
+        Departments testDepartment = setupDepartment();
+        assertEquals(1, departmentDao.getAll().size());
+    }
+
+    @Test
+    public void noDepartmentReturnsEmptyList() throws Exception{
+        assertEquals(0, departmentDao.getAll().size());
+    }
 //
-//    @Test
-//    public void addedDepartmentAreReturnedFromGetAll() throws Exception {
-//        Departments testDepartment = setupDepartment();
-//        assertEquals(1, departmentDao.getAll().size());
-//    }
-//
-//    @Test
-//    public void noDepartmentReturnsEmptyList() throws Exception{
-//        assertEquals(0, departmentDao.getAll().size());
-//    }
-//
-//    @Test
-//    public void findByIdReturnsCorrectDepartment() throws Exception {
-//        Departments testDepartment = setupDepartment();
-//        Departments otherDepartment = setupDepartment();
-//        assertEquals(testDepartment, departmentDao.findById(testDepartment.getId()));
-//    }
+    @Test
+    public void findByIdReturnsCorrectDepartment() throws Exception {
+        Departments testDepartment = setupDepartment();
+        Departments otherDepartment = setupDepartment();
+        assertEquals(testDepartment, departmentDao.findById(testDepartment.getId()));
+    }
 //
 //    @Test
 //    public void updateCorrectlyUpdatesAllFields() throws Exception {
@@ -88,21 +88,21 @@ public class Sql2oDepartmentsDaoTest {
 //    }
 //
 //
-//    @Test
-//    public void deleteByIdDeletesCorrectDepartments() throws Exception {
-//        Departments testDepartment = setupDepartment();
-////        Department otherDepartment = setupDepartment();
-//        departmentDao.deleteById(testDepartment.getId());
-//        assertEquals(0, departmentDao.getAll().size());
-//    }
+    @Test
+    public void deleteByIdDeletesCorrectDepartments() throws Exception {
+        Departments testDepartment = setupDepartment();
+//        Department otherDepartment = setupDepartment();
+        departmentDao.deleteById(testDepartment.getId());
+        assertEquals(1, departmentDao.getAll().size());
+    }
 //
-//    @Test
-//    public void clearAll() throws Exception {
-//        Departments testDepartment = setupDepartment();
-//        Departments otherDepartment = setupDepartment();
-//        departmentDao.clearAll();
-//        assertEquals(0, departmentDao.getAll().size());
-//    }
+    @Test
+    public void clearAll() throws Exception {
+        Departments testDepartment = setupDepartment();
+        Departments otherDepartment = setupDepartment();
+        departmentDao.clearAll();
+        assertEquals(0, departmentDao.getAll().size());
+    }
 //
 //
 //
@@ -146,15 +146,15 @@ public class Sql2oDepartmentsDaoTest {
 //
 //    //helpers
 //
-//    public Departments setupDepartment (){
-//        Departments department = new Departments("Marketing","marketing",24);
-//        departmentDao.add(department);
-//        return department;
-//    }
-//
-//    public Departments setupAltDepartment (){
-//        Departments department = new Departments("Marketing", "adverts", 12);
-//        departmentDao.add(department);
-//        return department;
-//    }
+    public Departments setupDepartment (){
+        Departments department = new Departments("Marketing","marketing",24);
+        departmentDao.add(department);
+        return department;
+    }
+
+    public Departments setupAltDepartment (){
+        Departments department = new Departments("Marketing", "adverts", 12);
+        departmentDao.add(department);
+        return department;
+    }
 }

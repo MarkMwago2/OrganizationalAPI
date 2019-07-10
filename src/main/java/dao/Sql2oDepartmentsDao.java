@@ -19,7 +19,7 @@ public class Sql2oDepartmentsDao implements DepartmentsDao{
 
     @Override
     public void add(Departments department) {
-        String sql = "INSERT INTO department (name, description, numberOfEmployees) VALUES (:name, :description, :numberOfEmployees)";
+        String sql = "INSERT INTO departments (name, description, numberofemployees) VALUES (:name, :description, :numberOfEmployees)";
         try (Connection con = DB.sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
                     .bind(department)
@@ -34,7 +34,7 @@ public class Sql2oDepartmentsDao implements DepartmentsDao{
     @Override
     public List<Departments> getAll() {
         try (Connection con = DB.sql2o.open()) {
-            return con.createQuery("SELECT * FROM department")
+            return con.createQuery("SELECT * FROM departments")
                     .executeAndFetch(Departments.class);
         }
     }
@@ -42,7 +42,7 @@ public class Sql2oDepartmentsDao implements DepartmentsDao{
     @Override
     public Departments findById(int id) {
         try (Connection con = DB.sql2o.open()) {
-            return con.createQuery("SELECT * FROM department WHERE id = :id")
+            return con.createQuery("SELECT * FROM departments WHERE id = :id")
                     .addParameter("id", id)
                     .executeAndFetchFirst(Departments.class);
         }
@@ -50,7 +50,7 @@ public class Sql2oDepartmentsDao implements DepartmentsDao{
 
     @Override
     public void update(int newId, String newName, String newDescription, int newNumberOfEmployees) {
-        String sql = "UPDATE department SET (name, description, numberOfEmployees) = (:name, :description, :numberOfEmployees) WHERE id=:id";
+        String sql = "UPDATE departments SET (name, description, numberofemployees) = (:name, :description, :numberOfEmployees) WHERE id=:id";
         try (Connection con = DB.sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", newId)
@@ -73,7 +73,7 @@ public class Sql2oDepartmentsDao implements DepartmentsDao{
                     .addParameter("id", id)
                     .executeUpdate();
             con.createQuery(deleteJoin)
-                    .addParameter("departmentId", id)
+                    .addParameter("departmentsId", id)
                     .executeUpdate();
 
         } catch (Sql2oException ex){
@@ -83,7 +83,7 @@ public class Sql2oDepartmentsDao implements DepartmentsDao{
 
     @Override
     public void clearAll() {
-        String sql = "DELETE from department";
+        String sql = "DELETE from departments";
         try (Connection con = DB.sql2o.open()) {
             con.createQuery(sql).executeUpdate();
         } catch (Sql2oException ex) {
