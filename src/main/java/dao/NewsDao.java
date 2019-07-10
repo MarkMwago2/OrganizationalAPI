@@ -19,5 +19,3 @@ public interface NewsDao {
 
     void clearAll();
 }
-
-

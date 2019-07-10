@@ -11,13 +11,13 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import static spark.Spark.*;
 import spark.ModelAndView;
-import spark.template.handlebars.HandlebarsTemplateEngine;
+
 
 
 import static spark.Spark.port;
 
 public class App {
-    public void main(String[]args ){
+    public static void main(String[] args){
 //        ProcessBuilder processBuilder = new ProcessBuilder();
 //        Integer port;
 //        if (processBuilder.environment().get("PORT")!= null){
@@ -92,7 +92,7 @@ public class App {
 
         //Get: View all users
         get("/users", "application/json", (request, response) -> {
-            return gson.toJson(UsersDao.getAllUsers());
+            return gson.toJson(UsersDao.getAllEmployees());
         });
 
         //post:Add a department to a user

@@ -12,7 +12,7 @@ public interface UsersDao {
     Users findById(int id);
 
     //Get all users
-    List<Users> getAllUsers();
+    List<Users> getAllEmployees();
 
     //Add a user to a department
     void addEmployeeToDepartment(Users employees, Departments department);
